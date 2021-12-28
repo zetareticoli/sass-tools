@@ -1,0 +1,6 @@
+// $FUNCTIONS  ---------------------------------------------------------------//
+// This function requires a map
+
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}

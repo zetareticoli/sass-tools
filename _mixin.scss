@@ -1,0 +1,336 @@
+// scss-lint:disable PropertySortOrder VendorPrefix
+// $MIXINS ------------------------------------------------------------------ //
+
+// It is necessary  @import  a "maps" of values for some mixin
+
+// Animation ---------------------------------------------------------------- //
+//
+@mixin animation($name, $duration, $timing, $delay, $iteration, $direction) {
+  animation-delay: $delay;
+  animation-direction: $direction;
+  animation-duration: $duration;
+  animation-iteration-count: $iteration;
+
+  animation-name: $name;
+  animation-timing-function: $timing;
+}
+
+// Background image --------------------------------------------------------- //
+//
+@mixin bgimg($position, $repeat, $size) {
+  background-position: $position;
+  background-repeat: $repeat;
+  background-size: $size;
+}
+
+// Border ----------------------------------------------------------------- -- //
+//
+@mixin border($size, $style, $color) {
+  border-bottom-color: $color;
+  border-style: $style;
+  border-width: $size;
+}
+
+@mixin border-top-radius($radius) {
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+  border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+  border-bottom-left-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+  border-top-left-radius: $radius;
+}
+
+@mixin border-rounded($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin u-border($direction, $size, $style, $color) {
+  .u-border-#{$direction} {
+    border-#{$direction}: $size $style $color;
+  }
+}
+
+// Box shadow --------------------------------------------------------------- //
+//
+@mixin box-shadow($shadow) {
+  -moz-box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+// Box sizing --------------------------------------------------------------- //
+//
+@mixin border-box($boxsizing: border-box) {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// Clearfix ------------------------------------------------------------------//
+//
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+// Columns Grid --------------------------------------------------------------//
+// This mixin requires a map
+
+@mixin grid($breakpoint) {
+  @media (min-width: map-get($breakpoints, $breakpoint)) {
+    @for $col from 1 through 12 {
+      .o-cell-#{$col}\@#{$breakpoint} {
+        width: 8.333333% * $col;
+      }
+    }
+  }
+}
+
+// Flexbox SASS mixins--------------------------------------------------------//
+// The spec: http://www.w3.org/TR/css3-flexbox
+@mixin flexbox($direction: row, $wrap: nowrap, $justify: flex-start, $align: flex-start) {
+  -webkit-flex-direction: $direction;
+
+  -webkit-flex-wrap: $wrap;
+  -webkit-justify-content: $justify;
+  -webkit-justify-content: $align;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+
+  justify-content: $justify;
+
+  justify-content: $align;
+}
+
+// Flexbox display
+//
+@mixin flex-display() {
+  display: -webkit-flex;
+  display: flex;
+}
+
+// The 'flex' shorthand
+// - applies to: flex items
+// <positive-number>, initial, auto, or none
+@mixin flex-values($values) {
+  -webkit-flex: $values;
+  flex: $values;
+}
+
+// Flex Flow Direction
+// - applies to: flex containers
+// row | row-reverse | column | column-reverse
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+// Flex Line Wrapping
+// - applies to: flex containers
+// nowrap | wrap | wrap-reverse
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+// Flex Direction and Wrap
+// - applies to: flex containers
+// <flex-direction> || <flex-wrap>
+@mixin flex-flow($flow) {
+  -webkit-flex-flow: $flow;
+  flex-flow: $flow;
+}
+
+// Display Order
+// - applies to: flex items
+// <integer>
+@mixin flex-order($val) {
+  -webkit-flex-order: $val;
+  order: $val;
+}
+
+// Flex grow factor
+// - applies to: flex items
+// <number>
+@mixin flex-grow($grow) {
+  -webkit-flex-grow: $grow;
+  flex-grow: $grow;
+}
+
+// Flex shrink
+// - applies to: flex item shrink factor
+// <number>
+@mixin flex-shrink($shrink) {
+  -webkit-flex-grow: $shrink;
+  flex-shrink: $shrink;
+}
+
+// Flex basis
+// - the initial main size of the flex item
+// - applies to: flex itemsnitial main size of the flex item
+// <width>
+@mixin flex-basis($width) {
+  -webkit-flex-basis: $width;
+  flex-basis: $width;
+}
+
+// Axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around
+@mixin flex-justify-content($justify) {
+  -webkit-justify-content: $justify;
+  justify-content: $justify;
+}
+
+// Packing Flex Lines
+// - applies to: multi-line flex containers
+// flex-start | flex-end | center | space-between | space-around | stretch
+@mixin flex-align-content($align) {
+  -webkit-justify-content: $align;
+  justify-content: $align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch
+@mixin flex-align-items($align) {
+  -webkit-align-items: $align;
+  align-items: $align;
+}
+
+// Cross-axis Alignment
+// - applies to: flex items
+// auto | flex-start | flex-end | center | baseline | stretch
+@mixin flex-align-self($align) {
+  -webkit-align-self: $align;
+  align-self: $align;
+}
+
+// Gradient ------------------------------------------------------------------//
+//
+@mixin gradient($color-one, $color-two, $color-three) {
+  background-image: linear-gradient(-180deg, $color-one 0%, $color-two 30%, $color-three 100%);
+}
+
+// Media queries and orientation ----------------------------------------------//
+// This mixin requires a map
+
+@mixin bp($bp, $rule: min-width, $orientation:false) {
+
+  @if ($orientation) {
+    @media screen and (#{$rule}: map-get($breakpoints, $bp)) and (orientation : $orientation) {
+      @content;
+    }
+  } 
+  @else {
+    @media screen and (#{$rule}: map-get($breakpoints, $bp))  {
+      @content;
+    }
+  }
+}
+
+// Position ----------------------------------------------------------------- //
+//
+@mixin position-a-tr($position: absolute, $top: 0, $right: 0) {
+  position: $position;
+  right: $right;
+  top: $top;
+}
+
+@mixin position-a-tl($position: absolute, $top: 0, $left: 0) {
+  left: $left;
+  position: $position;
+  top: $top;
+}
+
+@mixin position-a-br($position: absolute, $bottom: 0, $right: 0) {
+  bottom: $bottom;
+  position: $position;
+  right: $right;
+}
+
+@mixin position-a-bl($position: absolute, $bottom: 0, $left: 0) {
+  bottom: $bottom;
+  left: $left;
+  position: $position;
+}
+
+@mixin position-f-tl($position: fixed, $top: 0, $left: 0) {
+  left: $left;
+  position: $position;
+  top: $top;
+}
+
+@mixin position-f-tr($position: fixed, $top: 0, $right: 0) {
+  position: $position;
+  right: $right;
+  top: $top;
+}
+
+@mixin position-f-br($position: fixed, $bottom: 0, $right: 0) {
+  bottom: $bottom;
+  position: $position;
+  right: $right;
+}
+
+@mixin position-f-bl($position: fixed, $bottom: 0, $left: 0) {
+  bottom: $bottom;
+  left: $left;
+  position: $position;
+}
+
+// Pseudo Element ------------------------------------------------------------//
+//
+@mixin pseudo($top: 0, $left: 0, $bottom: auto, $right: auto, $width: 100%, $height: 100%) {
+  bottom: $bottom;
+  content: "";
+  height: $height;
+  left: $left;
+  position: absolute;
+  right: $right;
+  top: $top;
+  width: $width;
+}
+
+// Transform -----------------------------------------------------------------//
+//
+@mixin transform($value) {
+  -webkit-transform: $value;
+  transform: $value;
+}
+
+// Transition ----------------------------------------------------------------//
+//
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  // A shorthand property for setting the four transition properties into a single property
+  transition: $transition;
+}
+
+// Z-index ------------------------------------------------------------------ //
+// This mixin requires a map
+
+@mixin z($key) {
+  @if map-has-key($z-index, $key) {
+    z-index: map-get($z-index, $key);
+  } @else {
+    z-index: $key;
+  }
+}
