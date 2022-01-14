@@ -5,6 +5,3 @@ We suggest you to create maps with names in used in functions and mixin files.
 
 ## Installation
 `npm -i sass-tools`
-
-## Requirements
-It's mandatory to set the variable **$gutter** in your projects Settings file (e.g. `settings/_settings.scss`).
