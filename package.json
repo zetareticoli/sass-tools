@@ -13,7 +13,11 @@
   "keywords": [
     "scss",
     "Sass",
-    "Tools"
+    "tools",
+    "mixins",
+    "functions",
+    "utilities",
+    "utility"
   ],
   "author": "Francesco Improta",
   "license": "MIT",
