@@ -1,5 +1,5 @@
 {
-  "name": "sass-tools",
+  "name": "@zetareticoli/sass-tools",
   "version": "1.0.0",
   "description": "Saas Library",
   "main": "index.js",
